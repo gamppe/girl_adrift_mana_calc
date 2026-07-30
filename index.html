@@ -9,9 +9,7 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"><style>
   body{margin:0;background:#2a1a0f;}
   input[type="range"].wood-slider{-webkit-appearance:none;appearance:none;height:10px;border-radius:6px;background:linear-gradient(180deg,#5a3d24,#2f1d10);box-shadow:inset 0 2px 3px rgba(0,0,0,0.5);outline:none;}
   input[type="range"].wood-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#e0a83c 55%,#a8660f);border:2px solid #5a3410;box-shadow:0 2px 4px rgba(0,0,0,0.6);cursor:pointer;}
@@ -27,7 +25,9 @@
 <div style="min-height:100vh;padding:32px 16px;display:flex;justify-content:center;background-image:linear-gradient(180deg, rgba(10,14,20,0.15), rgba(10,14,20,0.35)), url('assets/bg_hqdefault2.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;font-family:'Noto Sans KR',sans-serif;">
 <div style="width:100%;max-width:760px;">
 
-  <div style="border-radius:18px;overflow:hidden;border:3px solid #1e1006;box-shadow:0 12px 40px rgba(0,0,0,0.55), inset 0 0 0 2px #7a4f26;">
+  <div style="position:relative;border-radius:18px;overflow:hidden;border:3px solid #1e1006;box-shadow:0 12px 40px rgba(0,0,0,0.55), inset 0 0 0 2px #7a4f26;">
+
+    <div style="position:absolute;top:8px;left:14px;font-size:11px;color:#d8c39a;opacity:0.8;letter-spacing:0.5px;z-index:2;">version 0.1</div>
 
     <div style="background:linear-gradient(180deg,#6b4526,#3a2412 90%);padding:18px 26px;border-bottom:4px solid #1e1006;text-align:center;">
       <img src="assets/title_logo.png" alt="표류소녀" style="height:52px;display:block;margin:0 auto;">
@@ -44,13 +44,13 @@
       <div style="background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:16px 18px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5), inset 0 -2px 6px rgba(120,80,30,0.15);display:flex;flex-direction:column;gap:14px;">
 
         <div style="display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px;">
-          <div style="display:flex;align-items:center;gap:10px;width:130px;flex:none;"><img src="assets/icon_scrap_final.png" style="width:34px;height:34px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">고철 레벨</div></div>
+          <div style="display:flex;align-items:center;gap:10px;width:140px;flex:none;"><img src="assets/icon_scrap_final.png" style="width:44px;height:44px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">고철 레벨</div></div>
           <input type="range" class="wood-slider" min="0" max="50" value="{{ scrap }}" onInput="{{ onScrapSlide }}" style="flex:1 1 140px;">
           <input type="number" min="0" max="50" value="{{ scrap }}" onInput="{{ onScrapNum }}" style="width:34px;padding:6px 2px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
         </div>
 
         <div style="display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px;">
-          <div style="display:flex;align-items:center;gap:10px;width:130px;flex:none;"><img src="assets/icon_obsidian_final.png" style="width:34px;height:34px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">흑요석 레벨</div></div>
+          <div style="display:flex;align-items:center;gap:10px;width:140px;flex:none;"><img src="assets/icon_obsidian_final.png" style="width:44px;height:44px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">흑요석 레벨</div></div>
           <input type="range" class="wood-slider" min="0" max="50" value="{{ obsidian }}" onInput="{{ onObsidianSlide }}" style="flex:1 1 140px;">
           <input type="number" min="0" max="50" value="{{ obsidian }}" onInput="{{ onObsidianNum }}" style="width:34px;padding:6px 2px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
         </div>
@@ -59,10 +59,12 @@
           <div style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;">
             <div style="font-weight:700;color:#f2f6fb;font-size:14px;">스킬 유지시간(%)</div>
             <input type="number" value="{{ lantern }}" onInput="{{ onLantern }}" style="width:46px;padding:6px 2px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+            <div style="font-size:12px;color:#4ade80;font-weight:700;">{{ skillDurationStr }}</div>
           </div>
           <div style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;">
             <div style="font-weight:700;color:#f2f6fb;font-size:14px;">구호품 보상(%)</div>
             <input type="number" value="{{ boxEff }}" onInput="{{ onBoxEff }}" style="width:46px;padding:6px 2px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+            <div style="font-size:12px;color:#4ade80;font-weight:700;">구호품 마나 : {{ itemRewardLo }}~{{ itemRewardHi }}<img src="assets/icon_mana_flame_final.png" style="width:14px;height:14px;vertical-align:-2px;margin:0 1px;" alt="마나"></div>
           </div>
         </div>
 
@@ -82,7 +84,7 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
         <sc-for list="{{ skills }}" as="sk" hint-placeholder-count="3">
           <div style="display:flex;align-items:center;gap:14px;background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:12px 16px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5);">
-            <image-slot id="{{ sk.iconId }}" shape="circle" style="width:48px;height:48px;flex:none;" placeholder="아이콘" src="{{ sk.iconSrc }}"></image-slot>
+            <img src="{{ sk.iconSrc }}" alt="" style="width:48px;height:48px;flex:none;border-radius:50%;object-fit:cover;">
             <div style="flex:1;min-width:0;">
               <div style="font-weight:700;color:#f2f6fb;font-size:15px;">{{ sk.name }}</div>
               <div style="font-size:12px;color:#cfe2f0;margin-top:2px;">{{ sk.desc }}</div>
@@ -161,6 +163,23 @@
 
       <sc-if value="{{ showFormula }}" hint-placeholder-val="{{ false }}">
         <div style="margin-top:14px;background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px dashed #a9824c;border-radius:12px;padding:16px 20px;font-size:12.5px;color:#eaf2fa;line-height:1.9;font-family:ui-monospace,monospace;">
+          <div style="color:#a8c4dc;">기본값</div>
+          <div>기본 마나재생량 : 1<img src="assets/icon_mana_flame_final.png" style="width:14px;height:14px;vertical-align:-2px;margin:0 1px;" alt="마나">/100초</div>
+          <div>기본 구호품 주기 : 40초</div>
+          <div>기본 구호품 생존시간 : 60초</div>
+          <div>기본 구호품 보상 : 1~12<img src="assets/icon_mana_flame_final.png" style="width:14px;height:14px;vertical-align:-2px;margin:0 1px;" alt="마나"> 중 무작위 × 0.5(어묵 제외)</div>
+          <div>기본 스킬 시간 : 5분</div>
+          <div style="margin:10px 0;border-top:1px dashed #a8c4dc;"></div>
+          <div style="color:#a8c4dc;">기호 설명</div>
+          <div>D : 스킬(버프) 유지시간</div>
+          <div>R : 필요 마나 소모율</div>
+          <div>T_f, u : 구호품 소비주기 계산용 중간값</div>
+          <div>P : 구호품 실제 소비주기(획득 주기)</div>
+          <div>E : 구호품 1회 평균 획득량</div>
+          <div>I : 구호품 마나 수급률</div>
+          <div>S : 총 마나 수급률</div>
+          <div>cost_i, D_i : i번째 스킬의 필요마나·유지시간</div>
+          <div style="margin:10px 0;border-top:1px dashed #a8c4dc;"></div>
           <div>자연 마나 회복량(초당) = 0.6 × (1 + 흑요석×0.1) / 60</div>
           <div>버프 유지시간 D = 300 × (1+스킬 유지시간%) / (부스터 ? 2 : 1)</div>
           <div>필요 마나 소모율 R = Σ (cost_i / D_i)</div>
@@ -170,8 +189,8 @@
           <div>구호품 수급률 I = E / P</div>
           <div>총 수급률 S = 자연회복량 + (기준≠구호품X ? I : 0)</div>
           <div>성공 조건: S &gt; R</div>
-          <div>시간 이득/손해_i = D_i − cost_i / (S − (R − cost_i/D_i))</div>
-          <div>마나 이득/손해_i = (S − (R − cost_i/D_i)) × D_i − cost_i</div>
+          <div>시간효율_i = D_i − cost_i / (S − (R − cost_i/D_i))</div>
+          <div>마나효율_i = (S − (R − cost_i/D_i)) × D_i − cost_i</div>
           <div>탐색: min max(고철,흑요석) s.t. S&gt;R, tie-break: 흑요석 asc → 고철 asc</div>
           <div style="margin-top:8px;color:#a8c4dc;">계산식 피드백 받습니다! 저 수학 못해요 ㅜ</div>
         </div>
@@ -185,9 +204,9 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   static SKILL_META = [
-    {key:'fish', name:'낚시 속도 증가', desc:'낚시 속도 증가', cost:20, iconId:'skill-icon-fish', iconSrc:'assets/icon_fish_final.png'},
-    {key:'move', name:'이동 속도 증가', desc:'이동 속도 및 탐지범위 증가', cost:25, iconId:'skill-icon-move', iconSrc:'assets/icon_move_final.png'},
-    {key:'world', name:'세계 가속', desc:'세계 시간 및 아이템 수급량 증가', cost:35, iconId:'skill-icon-world', iconSrc:'assets/icon_world_final.png'}
+    {key:'fish', name:'낚시 속도 증가', desc:'낚시 속도 증가', cost:20, iconSrc:'assets/icon_fish_final.png'},
+    {key:'move', name:'이동 속도 증가', desc:'이동 속도 및 탐지범위 증가', cost:25, iconSrc:'assets/icon_move_final.png'},
+    {key:'world', name:'세계 가속', desc:'세계 시간 및 아이템 수급량 증가', cost:35, iconSrc:'assets/icon_world_final.png'}
   ];
   static BTN_GOLD = 'padding:10px 26px;border:2px solid #1e1006;border-radius:8px;background:linear-gradient(180deg,#ffe08a,#e0a83c 60%,#b97a1c);color:#3a2412;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,0.35);';
   static BTN_DARK = 'padding:8px 18px;border:2px solid #1e1006;border-radius:8px;background:linear-gradient(180deg,#7a5230,#4a2f16);color:#e8d3a0;font-weight:700;font-size:13px;cursor:pointer;';
@@ -202,8 +221,10 @@ class Component extends DCLogic {
   static BTN_TOGGLE_ACTIVE = 'padding:6px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;border:2px solid #8a5a1c;background:linear-gradient(180deg,#ffe08a,#e0a83c);color:#3a2412;';
   static BTN_TOGGLE_INACTIVE = 'padding:6px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;border:2px solid #a9824c;background:#e5d6ac;color:#8a6b45;';
 
+  static STORAGE_KEY = 'girl-adrift-mana-calc-inputs-v1';
+
   state = {
-    scrap: 24, obsidian: 23, lantern: 75, boxEff: 75,
+    scrap: 0, obsidian: 0, lantern: 0, boxEff: 0,
     criterion: 'avg',
     skillState: { fish: {on:true, boost:false}, move:{on:false, boost:false}, world:{on:false, boost:false} },
     currentResult: null,
@@ -211,7 +232,27 @@ class Component extends DCLogic {
     showFormula: false
   };
 
-  componentDidMount(){ this.calcCurrent(); }
+  loadSavedInputs(){
+    try {
+      const raw = localStorage.getItem(Component.STORAGE_KEY);
+      if(!raw) return null;
+      const saved = JSON.parse(raw);
+      return saved && typeof saved === 'object' ? saved : null;
+    } catch(e){ return null; }
+  }
+
+  saveInputs(){
+    try {
+      const {scrap, obsidian, lantern, boxEff, criterion, skillState} = this.state;
+      localStorage.setItem(Component.STORAGE_KEY, JSON.stringify({scrap, obsidian, lantern, boxEff, criterion, skillState}));
+    } catch(e){}
+  }
+
+  componentDidMount(){
+    const saved = this.loadSavedInputs();
+    if(saved) this.setState(saved, () => this.calcCurrent());
+    else this.calcCurrent();
+  }
 
   naturalRatePerSec(obsidian){ return (0.6 * (1 + obsidian*0.1)) / 60; }
   buffDuration(boost, lanternPct){ const d = 300 * (1 + lanternPct/100); return boost ? d/2 : d; }
@@ -261,7 +302,7 @@ class Component extends DCLogic {
   setCriterionAvg(){ this.setState({criterion:'avg'}); }
   setCriterionMin(){ this.setState({criterion:'min'}); }
   setCriterionAlways(){ this.setState({criterion:'always'}); }
-  effectiveBoxEff(){ return this.state.criterion==='always' ? 100 : this.state.boxEff; }
+  effectiveScrap(){ return this.state.criterion==='always' ? 50 : this.state.scrap; }
   toggleFormula(){ this.setState(s=>({showFormula: !s.showFormula})); }
 
   toggleSkillOn(key){
@@ -272,8 +313,9 @@ class Component extends DCLogic {
   }
 
   calcCurrent(){
-    const {scrap, obsidian, lantern, criterion} = this.state;
-    const boxEff = this.effectiveBoxEff();
+    this.saveInputs();
+    const {obsidian, lantern, boxEff, criterion} = this.state;
+    const scrap = this.effectiveScrap();
     const skills = this.getSkillsArr();
     const natRate = this.naturalRatePerSec(obsidian);
     const itmRate = this.itemRatePerSec(scrap, boxEff);
@@ -321,12 +363,13 @@ class Component extends DCLogic {
   }
 
   calcSearch(){
-    const {lantern, criterion} = this.state;
-    const boxEff = this.effectiveBoxEff();
+    this.saveInputs();
+    const {lantern, boxEff, criterion} = this.state;
     const skills = this.getSkillsArr();
     const reqRate = this.requiredRatePerSec(skills, lantern);
     const useItem = criterion !== 'min';
-    const isOk = (o,s) => (this.naturalRatePerSec(o) + (useItem ? this.itemRatePerSec(s, boxEff) : 0)) > reqRate;
+    const forcedScrap = criterion === 'always' ? 50 : null;
+    const isOk = (o,s) => (this.naturalRatePerSec(o) + (useItem ? this.itemRatePerSec(forcedScrap ?? s, boxEff) : 0)) > reqRate;
 
     let found = null;
     for(let cap=0; cap<=50 && !found; cap++){
@@ -357,6 +400,9 @@ class Component extends DCLogic {
 
     return {
       scrap: this.state.scrap, obsidian: this.state.obsidian, lantern: this.state.lantern, boxEff: this.state.boxEff,
+      skillDurationStr: this.formatMinSec(this.buffDuration(false, this.state.lantern)) + ' 유지됨!',
+      itemRewardLo: Math.floor(1 * (1 + this.state.boxEff/100)),
+      itemRewardHi: Math.floor(12 * (1 + this.state.boxEff/100)),
       skills: skillsArr,
       avgBtnStyle: this.state.criterion==='avg' ? Component.BTN_TOGGLE_ACTIVE : Component.BTN_TOGGLE_INACTIVE,
       minBtnStyle: this.state.criterion==='min' ? Component.BTN_TOGGLE_ACTIVE : Component.BTN_TOGGLE_INACTIVE,
