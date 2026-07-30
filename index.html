@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#2a1a0f;}
+  input[type="range"].wood-slider{-webkit-appearance:none;appearance:none;height:10px;border-radius:6px;background:linear-gradient(180deg,#5a3d24,#2f1d10);box-shadow:inset 0 2px 3px rgba(0,0,0,0.5);outline:none;}
+  input[type="range"].wood-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#e0a83c 55%,#a8660f);border:2px solid #5a3410;box-shadow:0 2px 4px rgba(0,0,0,0.6);cursor:pointer;}
+  input[type="range"].wood-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#e0a83c 55%,#a8660f);border:2px solid #5a3410;box-shadow:0 2px 4px rgba(0,0,0,0.6);cursor:pointer;}
+  a{color:#8a5a1c;}
+  a:hover{color:#c4841c;}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:32px 16px;display:flex;justify-content:center;background-image:linear-gradient(180deg, rgba(10,14,20,0.15), rgba(10,14,20,0.35)), url('assets/bg_hqdefault2.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;font-family:'Noto Sans KR',sans-serif;">
+<div style="width:100%;max-width:760px;">
+
+  <div style="border-radius:18px;overflow:hidden;border:3px solid #1e1006;box-shadow:0 12px 40px rgba(0,0,0,0.55), inset 0 0 0 2px #7a4f26;">
+
+    <div style="background:linear-gradient(180deg,#6b4526,#3a2412 90%);padding:18px 26px;border-bottom:4px solid #1e1006;text-align:center;">
+      <img src="assets/title_logo.png" alt="표류소녀" style="height:52px;display:block;margin:0 auto;">
+      <div style="margin-top:6px;font-family:'Gaegu',sans-serif;font-weight:700;font-size:26px;letter-spacing:1px;color:#f5f0e6;text-shadow:0 1px 0 rgba(0,0,0,0.4);">간이 마나 계산기</div>
+      <div style="margin-top:4px;font-size:13px;color:#d8c39a;">간단 계산기입니다 · 마나 캡 등은 고려하지 않아 실제 결과와 다를 수 있어요</div>
+    </div>
+
+    <div style="background:rgba(20,35,70,0.55);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);padding:22px 22px 30px;">
+
+      <div style="display:flex;align-items:center;gap:10px;margin:0 0 14px;">
+        <div style="background:linear-gradient(180deg,#5a3a20,#2f1c0c);color:#ffe9a8;font-family:'Black Han Sans',sans-serif;font-size:18px;padding:7px 20px;border-radius:20px;border:2px solid #1e1006;box-shadow:0 2px 0 rgba(0,0,0,0.3);">기본 입력</div>
+      </div>
+
+      <div style="background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:16px 18px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5), inset 0 -2px 6px rgba(120,80,30,0.15);display:flex;flex-direction:column;gap:14px;">
+
+        <div style="display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px;">
+          <div style="display:flex;align-items:center;gap:10px;width:130px;flex:none;"><img src="assets/icon_scrap_final.png" style="width:34px;height:34px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">고철 레벨</div></div>
+          <input type="range" class="wood-slider" min="0" max="50" value="{{ scrap }}" onInput="{{ onScrapSlide }}" style="flex:1 1 140px;">
+          <input type="number" min="0" max="50" value="{{ scrap }}" onInput="{{ onScrapNum }}" style="width:56px;padding:6px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+        </div>
+
+        <div style="display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px;">
+          <div style="display:flex;align-items:center;gap:10px;width:130px;flex:none;"><img src="assets/icon_obsidian_final.png" style="width:34px;height:34px;flex:none;border-radius:50%;" alt=""><div style="font-weight:700;color:#f2f6fb;font-size:14px;">흑요석 레벨</div></div>
+          <input type="range" class="wood-slider" min="0" max="50" value="{{ obsidian }}" onInput="{{ onObsidianSlide }}" style="flex:1 1 140px;">
+          <input type="number" min="0" max="50" value="{{ obsidian }}" onInput="{{ onObsidianNum }}" style="width:56px;padding:6px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;">
+            <div style="font-weight:700;color:#f2f6fb;font-size:14px;">등불 증가율(%)</div>
+            <input type="number" value="{{ lantern }}" onInput="{{ onLantern }}" style="width:70px;padding:6px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+          </div>
+          <div style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;">
+            <div style="font-weight:700;color:#f2f6fb;font-size:14px;">상자 효율 증가율(%)</div>
+            <input type="number" value="{{ boxEff }}" onInput="{{ onBoxEff }}" style="width:70px;padding:6px;border-radius:6px;border:2px solid #a9824c;background:#fffaee;color:#4a2f16;font-weight:700;text-align:center;font-size:14px;">
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="font-weight:700;color:#f2f6fb;font-size:14px;">계산 기준</div>
+          <button style="{{ avgBtnStyle }}" onClick="{{ setCriterionAvg }}">평균</button>
+          <button style="{{ minBtnStyle }}" onClick="{{ setCriterionMin }}">구호품 제외</button>
+        </div>
+
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin:24px 0 14px;">
+        <div style="background:linear-gradient(180deg,#5a3a20,#2f1c0c);color:#ffe9a8;font-family:'Black Han Sans',sans-serif;font-size:18px;padding:7px 20px;border-radius:20px;border:2px solid #1e1006;box-shadow:0 2px 0 rgba(0,0,0,0.3);">스킬 선택</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ skills }}" as="sk" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:14px;background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:12px 16px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5);">
+            <image-slot id="{{ sk.iconId }}" shape="circle" style="width:48px;height:48px;flex:none;" placeholder="아이콘" src="{{ sk.iconSrc }}"></image-slot>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:700;color:#f2f6fb;font-size:15px;">{{ sk.name }}</div>
+              <div style="font-size:12px;color:#cfe2f0;margin-top:2px;">{{ sk.desc }}</div>
+            </div>
+            <button style="{{ sk.onStyle }}" onClick="{{ sk.toggleOn }}">
+              <img src="assets/icon_mana_flame_final.png" style="width:20px;height:20px;flex:none;{{ sk.iconFilter }}" alt="">
+              <span>{{ sk.cost }}</span>
+            </button>
+            <button style="{{ sk.boostStyle }}" onClick="{{ sk.toggleBoost }}">
+              <div style="{{ sk.boostArrowStyle }}"></div>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:14px;justify-content:center;margin:26px 0 6px;flex-wrap:wrap;">
+        <button style="{{ calcBtnStyle }}" onClick="{{ calcCurrent }}">현재 계산</button>
+        <button style="{{ searchBtnStyle }}" onClick="{{ calcSearch }}">유물 레벨 탐색</button>
+      </div>
+
+      <sc-if value="{{ hasCurrentResult }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="background:linear-gradient(180deg,#5a3a20,#2f1c0c);color:#ffe9a8;font-family:'Black Han Sans',sans-serif;font-size:18px;padding:7px 20px;border-radius:20px;border:2px solid #1e1006;box-shadow:0 2px 0 rgba(0,0,0,0.3);">현재 계산 결과</div>
+            <div style="{{ successBadgeStyle }}">{{ successLabel }}</div>
+          </div>
+
+          <div style="background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:6px 18px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5);">
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">마나 요구량 ({{ refDurationStr }}마다)</span><span style="font-weight:700;color:#f2f6fb;">{{ manaNeededStr }}</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">자연 마나 회복량(분당)</span><span style="font-weight:700;color:#f2f6fb;">{{ natRateStr }}</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">구호품 평균 마나(1회 기대값)</span><span style="font-weight:700;color:#f2f6fb;">{{ expectedPickupStr }}</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">구호품 마나 수급률(분당)</span><span style="font-weight:700;color:#f2f6fb;">{{ itmRateStr }}</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">총 마나 수급률(분당)</span><span style="font-weight:900;color:#1c6b2e;">{{ supplyRateStr }}</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;"><span style="color:#cfe2f0;font-size:13px;">필요 마나 소모율(분당)</span><span style="font-weight:900;color:#a8321f;">{{ reqRateStr }}</span></div>
+          </div>
+
+          <div style="margin-top:14px;border-radius:10px;overflow:hidden;border:2px solid #a9824c;">
+            <div style="display:grid;grid-template-columns:1.3fr 1fr 0.8fr 1fr 1fr 1fr;background:linear-gradient(180deg,#5a3a20,#2f1c0c);color:#ffe9a8;font-size:12px;font-weight:700;">
+              <div style="padding:8px 10px;">스킬</div><div style="padding:8px 10px;text-align:right;">유지시간</div><div style="padding:8px 10px;text-align:right;">필요마나</div><div style="padding:8px 10px;text-align:right;">소모율/분</div><div style="padding:8px 10px;text-align:right;">시간差</div><div style="padding:8px 10px;text-align:right;">마나差</div>
+            </div>
+            <sc-for list="{{ currentRows }}" as="row" hint-placeholder-count="2">
+              <div style="display:grid;grid-template-columns:1.3fr 1fr 0.8fr 1fr 1fr 1fr;background:{{ row.rowBg }};font-size:13px;color:#f2f6fb;">
+                <div style="padding:8px 10px;font-weight:700;">{{ row.name }}</div>
+                <div style="padding:8px 10px;text-align:right;">{{ row.duration }}</div>
+                <div style="padding:8px 10px;text-align:right;">{{ row.cost }}</div>
+                <div style="padding:8px 10px;text-align:right;">{{ row.rate }}</div>
+                <div style="padding:8px 10px;text-align:right;color:{{ row.diffColor }};font-weight:700;">{{ row.diffStr }}</div>
+                <div style="padding:8px 10px;text-align:right;color:{{ row.manaDiffColor }};font-weight:700;">{{ row.manaDiffStr }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasSearchResult }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="background:linear-gradient(180deg,#5a3a20,#2f1c0c);color:#ffe9a8;font-family:'Black Han Sans',sans-serif;font-size:18px;padding:7px 20px;border-radius:20px;border:2px solid #1e1006;box-shadow:0 2px 0 rgba(0,0,0,0.3);">유물 레벨 탐색 결과</div>
+          </div>
+          <div style="background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px solid #a9824c;border-radius:12px;padding:6px 18px;box-shadow:inset 0 1px 3px rgba(255,255,255,0.5);">
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">필요 마나 소모율(분당)</span><span style="font-weight:700;color:#f2f6fb;">{{ searchReqRateStr }}</span></div>
+            <sc-if value="{{ searchFound }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.25);"><span style="color:#cfe2f0;font-size:13px;">고철 레벨</span><span style="font-weight:900;color:#1c6b2e;">{{ searchScrap }}</span></div>
+              <div style="display:flex;justify-content:space-between;padding:9px 0;"><span style="color:#cfe2f0;font-size:13px;">흑요석 레벨</span><span style="font-weight:900;color:#1c6b2e;">{{ searchObsidian }}</span></div>
+            </sc-if>
+            <sc-if value="{{ searchNotFound }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:9px 0;color:#a8321f;font-weight:700;font-size:13px;">0~50 범위 내에서 조건을 만족하는 조합을 찾지 못했습니다.</div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:26px;text-align:center;">
+        <button style="{{ formulaBtnStyle }}" onClick="{{ toggleFormula }}">{{ formulaBtnLabel }}</button>
+      </div>
+
+      <sc-if value="{{ showFormula }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:14px;background:rgba(248,236,201,0.42);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:2px dashed #a9824c;border-radius:12px;padding:16px 20px;font-size:12.5px;color:#eaf2fa;line-height:1.9;font-family:ui-monospace,monospace;">
+          <div>자연 마나 회복량(초당) = 0.6 × (1 + 흑요석×0.1) / 60</div>
+          <div>버프 유지시간 D = 300 × (1+등불) / (부스터 ? 2 : 1)</div>
+          <div>필요 마나 소모율 R = Σ (cost_i / D_i)</div>
+          <div>T_f = 2000 / 고철, u = (T_f − 40) mod 100</div>
+          <div>소비주기 P = 40 (T_f&lt;40) | T_f (u≤60) | T_f+(100−u) (그 외)</div>
+          <div>E = 0.5 × ( Σ<sub>raw=1..12</sub> floor(raw×(1+상자효율)) / 12 )</div>
+          <div>구호품 수급률 I = E / P</div>
+          <div>총 수급률 S = 자연회복량 + (기준≠구호품X ? I : 0)</div>
+          <div>성공 조건: S &gt; R</div>
+          <div>시간 이득/손해_i = D_i − cost_i / (S − (R − cost_i/D_i))</div>
+          <div>마나 이득/손해_i = (S − (R − cost_i/D_i)) × D_i − cost_i</div>
+          <div>탐색: min max(고철,흑요석) s.t. S&gt;R, tie-break: 흑요석 asc → 고철 asc</div>
+          <div style="margin-top:8px;color:#a8c4dc;">계산식 피드백 받습니다! 저 수학 못해요 ㅜ</div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static SKILL_META = [
+    {key:'fish', name:'낚시 속도 증가', desc:'낚시 속도 증가', cost:20, iconId:'skill-icon-fish', iconSrc:'assets/icon_fish_final.png'},
+    {key:'move', name:'이동 속도 증가', desc:'이동 속도 및 탐지범위 증가', cost:25, iconId:'skill-icon-move', iconSrc:'assets/icon_move_final.png'},
+    {key:'world', name:'세계 가속', desc:'세계 시간 및 획득량 증가', cost:35, iconId:'skill-icon-world', iconSrc:'assets/icon_world_final.png'}
+  ];
+  static BTN_GOLD = 'padding:10px 26px;border:2px solid #1e1006;border-radius:8px;background:linear-gradient(180deg,#ffe08a,#e0a83c 60%,#b97a1c);color:#3a2412;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,0.35);';
+  static BTN_DARK = 'padding:8px 18px;border:2px solid #1e1006;border-radius:8px;background:linear-gradient(180deg,#7a5230,#4a2f16);color:#e8d3a0;font-weight:700;font-size:13px;cursor:pointer;';
+  static BTN_SQ_BASE = 'display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 14px;border-radius:8px;font-weight:800;font-size:14px;cursor:pointer;border:2px solid;min-width:40px;';
+  static BTN_ON_ACTIVE = Component.BTN_SQ_BASE + 'background:linear-gradient(180deg,#ffe9a8,#e0a83c 60%,#b97a1c);border-color:#8a5a1c;color:#3a2412;box-shadow:0 2px 0 rgba(0,0,0,0.3);';
+  static BTN_ON_INACTIVE = Component.BTN_SQ_BASE + 'background:#d8c39a;border-color:#a9824c;color:#8a6b45;box-shadow:none;';
+  static BTN_BOOST_ACTIVE = Component.BTN_SQ_BASE + 'padding:7px 12px;background:linear-gradient(180deg,#ffe9a8,#e0a83c 60%,#b97a1c);border-color:#8a5a1c;box-shadow:0 2px 0 rgba(0,0,0,0.3);';
+  static BTN_BOOST_INACTIVE = Component.BTN_SQ_BASE + 'padding:7px 12px;background:#d8c39a;border-color:#a9824c;box-shadow:none;';
+  static ARROW_SHAPE = 'width:18px;height:18px;clip-path:polygon(50% 0%,100% 45%,75% 45%,75% 100%,25% 100%,25% 45%,0% 45%);';
+  static ARROW_ACTIVE = Component.ARROW_SHAPE + 'background:linear-gradient(180deg,#ffb648,#d9791a);filter:drop-shadow(0 1px 0.5px rgba(0,0,0,0.5));';
+  static ARROW_INACTIVE = Component.ARROW_SHAPE + 'background:#a99872;filter:none;';
+  static BTN_TOGGLE_ACTIVE = 'padding:6px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;border:2px solid #8a5a1c;background:linear-gradient(180deg,#ffe08a,#e0a83c);color:#3a2412;';
+  static BTN_TOGGLE_INACTIVE = 'padding:6px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;border:2px solid #a9824c;background:#e5d6ac;color:#8a6b45;';
+
+  state = {
+    scrap: 24, obsidian: 23, lantern: 75, boxEff: 75,
+    criterion: 'avg',
+    skillState: { fish: {on:true, boost:false}, move:{on:false, boost:false}, world:{on:false, boost:false} },
+    currentResult: null,
+    searchResult: null,
+    showFormula: false
+  };
+
+  componentDidMount(){ this.calcCurrent(); }
+
+  naturalRatePerSec(obsidian){ return (0.6 * (1 + obsidian*0.1)) / 60; }
+  buffDuration(boost, lanternPct){ const d = 300 * (1 + lanternPct/100); return boost ? d/2 : d; }
+  expectedManaPerPickup(boxEffPct){
+    const mult = 1 + boxEffPct/100;
+    let sum = 0;
+    for(let raw=1; raw<=12; raw++) sum += Math.floor(raw*mult);
+    return 0.5 * (sum/12);
+  }
+  secPerPickup(scrap){
+    if(scrap<=0) return Infinity;
+    const Tf = 2000/scrap;
+    if(Tf < 40) return 40;
+    const u = (Tf - 40) % 100;
+    if(u <= 60) return Tf;
+    return Tf + (100-u);
+  }
+  itemRatePerSec(scrap, boxEffPct){
+    const spp = this.secPerPickup(scrap);
+    if(!isFinite(spp)) return 0;
+    return this.expectedManaPerPickup(boxEffPct)/spp;
+  }
+  requiredRatePerSec(skillsArr, lanternPct){
+    let total = 0;
+    for(const s of skillsArr){ if(!s.on) continue; total += s.cost/this.buffDuration(s.boost, lanternPct); }
+    return total;
+  }
+  formatNum(value, maxDecimals){
+    if(!isFinite(value)) return '∞';
+    return Number(value.toFixed(maxDecimals)).toString();
+  }
+  formatMinSec(seconds){
+    const m = Math.floor(seconds/60), s = Math.round(seconds%60);
+    return m + '분' + s + '초';
+  }
+
+  getSkillsArr(){
+    return Component.SKILL_META.map(m => ({...m, ...this.state.skillState[m.key]}));
+  }
+
+  onScrapSlide(e){ this.setState({scrap:Number(e.target.value)}); }
+  onScrapNum(e){ this.setState({scrap:Number(e.target.value)}); }
+  onObsidianSlide(e){ this.setState({obsidian:Number(e.target.value)}); }
+  onObsidianNum(e){ this.setState({obsidian:Number(e.target.value)}); }
+  onLantern(e){ this.setState({lantern:Number(e.target.value)}); }
+  onBoxEff(e){ this.setState({boxEff:Number(e.target.value)}); }
+  setCriterionAvg(){ this.setState({criterion:'avg'}); }
+  setCriterionMin(){ this.setState({criterion:'min'}); }
+  toggleFormula(){ this.setState(s=>({showFormula: !s.showFormula})); }
+
+  toggleSkillOn(key){
+    this.setState(s => ({ skillState: {...s.skillState, [key]: {...s.skillState[key], on: !s.skillState[key].on} } }));
+  }
+  toggleSkillBoost(key){
+    this.setState(s => ({ skillState: {...s.skillState, [key]: {...s.skillState[key], boost: !s.skillState[key].boost} } }));
+  }
+
+  calcCurrent(){
+    const {scrap, obsidian, lantern, boxEff, criterion} = this.state;
+    const skills = this.getSkillsArr();
+    const natRate = this.naturalRatePerSec(obsidian);
+    const itmRate = this.itemRatePerSec(scrap, boxEff);
+    const useItem = criterion !== 'min';
+    const supplyRate = natRate + (useItem ? itmRate : 0);
+    const reqRate = this.requiredRatePerSec(skills, lantern);
+    const success = supplyRate > reqRate;
+
+    let rows = [];
+    let idx = 0;
+    const rawDurations = [];
+    for(const s of skills){
+      if(!s.on) continue;
+      const d = this.buffDuration(s.boost, lantern);
+      rawDurations.push(this.buffDuration(false, lantern));
+      const rate = s.cost/d;
+      const otherRate = reqRate - rate;
+      const netRate = supplyRate - otherRate;
+      const timeToRefill = netRate > 0 ? s.cost/netRate : Infinity;
+      const diff = d - timeToRefill;
+      const diffStr = diff > 1800 ? '개이득!' : diff < -1800 ? '개손해!' : (diff>=0?'+':'-') + this.formatMinSec(Math.abs(diff));
+      const manaDiff = netRate*d - s.cost;
+      const manaDiffStr = (manaDiff>=0?'+':'-') + this.formatNum(Math.abs(manaDiff),2);
+      rows.push({
+        name: s.name, duration: this.formatMinSec(d), cost: s.cost, rate: this.formatNum(rate*60,3),
+        diffStr, diffColor: diff>=0 ? '#1c6b2e' : '#a8321f',
+        manaDiffStr, manaDiffColor: manaDiff>=0 ? '#1c6b2e' : '#a8321f',
+        rowBg: idx%2===0 ? 'rgba(248,236,201,0.35)' : 'rgba(240,225,180,0.35)'
+      });
+      idx++;
+    }
+    const refDuration = rawDurations.length ? Math.max(...rawDurations) : 0;
+    const manaNeeded = reqRate * refDuration;
+
+    this.setState({ currentResult: {
+      refDurationStr: this.formatMinSec(refDuration),
+      manaNeededStr: this.formatNum(manaNeeded,2),
+      natRateStr: this.formatNum(natRate*60,4),
+      expectedPickupStr: this.formatNum(this.expectedManaPerPickup(boxEff),3),
+      itmRateStr: this.formatNum(itmRate*60,4),
+      supplyRateStr: this.formatNum(supplyRate*60,4),
+      reqRateStr: this.formatNum(reqRate*60,4),
+      success, rows
+    }});
+  }
+
+  calcSearch(){
+    const {lantern, boxEff, criterion} = this.state;
+    const skills = this.getSkillsArr();
+    const reqRate = this.requiredRatePerSec(skills, lantern);
+    const useItem = criterion !== 'min';
+    const isOk = (o,s) => (this.naturalRatePerSec(o) + (useItem ? this.itemRatePerSec(s, boxEff) : 0)) > reqRate;
+
+    let found = null;
+    for(let cap=0; cap<=50 && !found; cap++){
+      let candidates = [];
+      for(let o=0;o<=cap;o++) for(let s=0;s<=cap;s++){
+        if(Math.max(o,s)!==cap) continue;
+        if(isOk(o,s)) candidates.push({o,s});
+      }
+      if(candidates.length){ candidates.sort((a,b)=> a.o-b.o || a.s-b.s); found = candidates[0]; }
+    }
+
+    this.setState({ searchResult: { reqRateStr: this.formatNum(reqRate*60,4), found } });
+  }
+
+  renderVals(){
+    const skillsArr = this.getSkillsArr().map(s => ({
+      ...s,
+      onStyle: s.on ? Component.BTN_ON_ACTIVE : Component.BTN_ON_INACTIVE,
+      boostStyle: s.boost ? Component.BTN_BOOST_ACTIVE : Component.BTN_BOOST_INACTIVE,
+      iconFilter: s.on ? 'filter:none;' : 'filter:grayscale(1) opacity(0.55);',
+      boostArrowStyle: s.boost ? Component.ARROW_ACTIVE : Component.ARROW_INACTIVE,
+      toggleOn: () => this.toggleSkillOn(s.key),
+      toggleBoost: () => this.toggleSkillBoost(s.key)
+    }));
+
+    const cr = this.state.currentResult;
+    const sr = this.state.searchResult;
+
+    return {
+      scrap: this.state.scrap, obsidian: this.state.obsidian, lantern: this.state.lantern, boxEff: this.state.boxEff,
+      skills: skillsArr,
+      avgBtnStyle: this.state.criterion==='avg' ? Component.BTN_TOGGLE_ACTIVE : Component.BTN_TOGGLE_INACTIVE,
+      minBtnStyle: this.state.criterion==='min' ? Component.BTN_TOGGLE_ACTIVE : Component.BTN_TOGGLE_INACTIVE,
+      onScrapSlide: (e)=>this.onScrapSlide(e), onScrapNum:(e)=>this.onScrapNum(e),
+      onObsidianSlide:(e)=>this.onObsidianSlide(e), onObsidianNum:(e)=>this.onObsidianNum(e),
+      onLantern:(e)=>this.onLantern(e), onBoxEff:(e)=>this.onBoxEff(e),
+      setCriterionAvg:()=>this.setCriterionAvg(), setCriterionMin:()=>this.setCriterionMin(),
+      calcCurrent: ()=>this.calcCurrent(), calcSearch: ()=>this.calcSearch(),
+      calcBtnStyle: Component.BTN_GOLD, searchBtnStyle: Component.BTN_DARK,
+      hasCurrentResult: !!cr,
+      successLabel: cr ? (cr.success ? '자동 가능' : '자동 불가') : '',
+      successBadgeStyle: cr ? ('padding:5px 16px;border-radius:14px;font-weight:900;font-size:13px;border:2px solid ' + (cr.success?'#2b6b2b':'#7a2318') + ';background:' + (cr.success?'linear-gradient(180deg,#8fd685,#4c9a4c)':'linear-gradient(180deg,#e98b83,#c14338)') + ';color:' + (cr.success?'#173a17':'#fff') + ';') : '',
+      refDurationStr: cr ? cr.refDurationStr : '', manaNeededStr: cr ? cr.manaNeededStr : '',
+      natRateStr: cr ? cr.natRateStr : '', expectedPickupStr: cr ? cr.expectedPickupStr : '',
+      itmRateStr: cr ? cr.itmRateStr : '', supplyRateStr: cr ? cr.supplyRateStr : '', reqRateStr: cr ? cr.reqRateStr : '',
+      currentRows: cr ? cr.rows : [],
+      hasSearchResult: !!sr,
+      searchReqRateStr: sr ? sr.reqRateStr : '',
+      searchFound: !!(sr && sr.found),
+      searchNotFound: !!(sr && !sr.found),
+      searchScrap: sr && sr.found ? sr.found.s : '',
+      searchObsidian: sr && sr.found ? sr.found.o : '',
+      showFormula: this.state.showFormula,
+      toggleFormula: ()=>this.toggleFormula(),
+      formulaBtnStyle: Component.BTN_DARK,
+      formulaBtnLabel: this.state.showFormula ? '계산식 숨기기' : '계산식 보기'
+    };
+  }
+}
+</script>
+</body>
+</html>
