@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gamppe.github.io/girl_adrift_mana_calc/sitemap.xml
