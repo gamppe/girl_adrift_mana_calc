@@ -15,7 +15,6 @@ input[type="range"].wood-slider-sm::-webkit-slider-thumb{width:16px;height:16px;
 input[type="range"].wood-slider-sm::-moz-range-thumb{width:16px;height:16px;}
 input[type="range"].wood-slider-vert{writing-mode:vertical-lr;direction:rtl;width:6px;height:52px;}
 .slider-flex{flex:1 1 140px;}
-.slider-flex-half{flex:0 1 70px;}
 
 /* ===== info badge / tooltip ===== */
 .info-badge{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex:none;border-radius:50%;background:#ffe9a8;color:#2f1c0c;font-family:ui-monospace,monospace;font-size:11px;font-weight:900;cursor:help;}
