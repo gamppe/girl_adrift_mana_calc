@@ -108,6 +108,7 @@ input[type="range"].wood-slider-vert{writing-mode:vertical-lr;direction:rtl;widt
 .result-value{font-weight:700;color:#f2f6fb;}
 .potion-label{display:flex;align-items:center;gap:6px;color:#cfe2f0;font-size:13px;}
 .hint-text{padding:9px 0;color:#cfe2f0;font-size:13px;}
+.hint-text-tight{padding:0;margin:-8px 0;}
 .fail-text{padding:9px 0;color:#a8321f;font-weight:700;font-size:13px;}
 
 /* ===== status badge ===== */
