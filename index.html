@@ -23,7 +23,7 @@
       </helmet>
 
       <div class="page">
-        <div class="version-label">version 0.1.2</div>
+        <div class="version-label">version 0.1.3</div>
 
         <div class="page-inner">
           <div class="card">
@@ -585,7 +585,7 @@
                   <div>기본 구호품 주기 : 40초</div>
                   <div>기본 구호품 생존시간 : 60초</div>
                   <div>
-                    기본 구호품 보상 : 1~12<img
+                    기본 구호품 보상 : 1~10<img
                       src="assets/icon_mana_flame_final.png"
                       class="icon-14 icon-mid-2"
                       alt="마나"
@@ -618,8 +618,8 @@
                     외)
                   </div>
                   <div>
-                    E = 0.5 × ( Σ<sub>raw=1..12</sub> floor(raw×(1+구호품
-                    보상%)) / 12 )
+                    E = 0.5 × ( Σ<sub>raw=1..10</sub> floor(raw×(1+구호품
+                    보상%)) / 10 )
                   </div>
                   <div>구호품 수급률 I = E / P</div>
                   <div>총 수급률 S = 자연회복량 + (기준≠구호품X ? I : 0)</div>
@@ -724,8 +724,8 @@
         expectedManaPerPickup(boxEffPct){
           const mult = 1 + boxEffPct/100;
           let sum = 0;
-          for(let raw=1; raw<=12; raw++) sum += Math.floor(raw*mult);
-          return 0.5 * (sum/12);
+          for(let raw=1; raw<=10; raw++) sum += Math.floor(raw*mult);
+          return 0.5 * (sum/10);
         }
         secPerPickup(scrap){
           if(scrap<=0) return Infinity;
@@ -1025,7 +1025,7 @@
             idleH: this.state.idleH, idleM: this.state.idleM, idleS: this.state.idleS,
             skillDurationStr: this.formatMinSec(this.buffDuration(false, this.state.lantern)) + ' 유지됨!',
             itemRewardLo: Math.floor(1 * (1 + this.state.boxEff/100)),
-            itemRewardHi: Math.floor(12 * (1 + this.state.boxEff/100)),
+            itemRewardHi: Math.floor(10 * (1 + this.state.boxEff/100)),
             skills: skillsArr,
             avgBtnStyle: this.state.criterion==='avg' ? 'btn-toggle active' : 'btn-toggle',
             minBtnStyle: this.state.criterion==='min' ? 'btn-toggle active' : 'btn-toggle',
